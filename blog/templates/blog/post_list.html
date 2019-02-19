@@ -1,45 +1,12 @@
-<html>
-<head>
-  <title>Nikita's blog</title>
-</head>
-<body>
-  <!-- <div>
-    <h1><a href = "/">Django blog </a> </h1>
-  </div>
-
-  <!-- <div>
-
-    <h2><a href = "">My first post </a></h2>
-   <p>A template is a file that we can re-use to present different information in a consistent format –
-      for example, you could use a template to help you write a letter
-      because although each letter might contain a different message and be addressed to a different person,
-      they will share the same format.</p>
-    <p>published: 18.02.2019, 17:37</p>
-  </div>
-  <div>
-
-    <h2><a href = "">My second post </a></h2>
-   <p>A template is a file that we can re-use to present different information in a consistent format –
-      for example, you could use a template to help you write a letter
-      because although each letter might contain a different message and be addressed to a different person,
-      they will share the same format.</p>
-  <p>published: 18.02.2019, 17:37</p>
-  </div> -->
-  <!-- {{posts}} -->
-  <!-- {% for post in posts %}
-    {{post}}
-  {% endfor %} -->
-
-<div>
-  <h1><a href = "/">NikBlog</a></h1>
-</div>
-
+{% extends 'blog/base.html' %}
+{% block content %}
 {% for post in posts %}
-  <div>
-    <p>published: {{ post.published_date}}</p>
-    <h2><a href = "">{{ post.title }}</a></h2>
-    <p>{{ post.text|linebreaksbr }}</p>
+  <div class = "post">
+    <div class = "date">
+      <p>published: {{ post.published_date }}</p>
+    </div>
+    <h2><a href = "{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+    <p>{{ post.text| linebreaksbr }}</p>
   </div>
 {% endfor %}
-</body>
-</html>
+{% endblock %}
